@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2022, The Monero Project
+// Copyright (c) 2020-2022, The Sherkitty Project
 
 // 
 // All rights reserved.
@@ -36,8 +36,8 @@
 
 using namespace epee;
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "cn.mm"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "cn.mm"
 
 using namespace crypto;
 

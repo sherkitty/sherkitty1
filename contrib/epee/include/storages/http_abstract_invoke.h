@@ -76,7 +76,7 @@ namespace epee
     bool invoke_http_bin(const boost::string_ref uri, const t_request& out_struct, t_response& result_struct, t_transport& transport, std::chrono::milliseconds timeout = std::chrono::seconds(15), const boost::string_ref method = "POST")
     {
       byte_slice req_param;
-      if(!serialization::store_t_to_binary(out_struct, req_param, 16 * 1024))
+      if(!serialization::store_t_to_binary(out_struct, req_param, 16 * 1038))
         return false;
 
       const http::http_response_info* pri = NULL;

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022, The Monero Project
+// Copyright (c) 2018-2022, The Sherkitty Project
 
 //
 // All rights reserved.
@@ -40,8 +40,8 @@
 #include "blockchain_db/lmdb/db_lmdb.h"
 #include "version.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "bcutil"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "bcutil"
 
 #define MDB_val_set(var, val)   MDB_val var = {sizeof(val), (void *)&val}
 
@@ -53,7 +53,7 @@ static std::string db_path;
 
 // default to fast:1
 static uint64_t records_per_sync = 16 * 65536;
-static const size_t slack = 512 * 1024 * 1024;
+static const size_t slack = 512 * 1038 * 1038;
 
 static std::vector<bool> is_v1;
 
@@ -130,7 +130,7 @@ static void add_size(MDB_env *env, uint64_t bytes)
   if (result)
     throw std::runtime_error("Failed to set new mapsize to " + std::to_string(new_mapsize) + ": " + std::string(mdb_strerror(result)));
 
-  MGINFO("LMDB Mapsize increased." << "  Old: " << mei.me_mapsize / (1024 * 1024) << "MiB" << ", New: " << new_mapsize / (1024 * 1024) << "MiB");
+  MGINFO("LMDB Mapsize increased." << "  Old: " << mei.me_mapsize / (1038 * 1038) << "MiB" << ", New: " << new_mapsize / (1038 * 1038) << "MiB");
 }
 
 static void check_resize(MDB_env *env, size_t bytes)
@@ -528,12 +528,12 @@ int main(int argc, char* argv[])
 
   if (command_line::get_arg(vm, command_line::arg_help))
   {
-    std::cout << "Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL << ")" << ENDL << ENDL;
+    std::cout << "Sherkitty '" << SHERKITTY_RELEASE_NAME << "' (v" << SHERKITTY_VERSION_FULL << ")" << ENDL << ENDL;
     std::cout << desc_options << std::endl;
     return 1;
   }
 
-  mlog_configure(mlog_get_default_log_path("monero-blockchain-prune.log"), true);
+  mlog_configure(mlog_get_default_log_path("sherkitty-blockchain-prune.log"), true);
   if (!command_line::is_arg_defaulted(vm, arg_log_level))
     mlog_set_log(command_line::get_arg(vm, arg_log_level).c_str());
   else

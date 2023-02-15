@@ -31,8 +31,8 @@
 #include "storages/portable_storage.h"
 #include "storages/portable_storage_template_helper.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.http"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net.http"
 
 
 #define CHAIN_HTTP_TO_MAP2(context_type) bool handle_http_request(const epee::net_utils::http::http_request_info& query_info, \
@@ -127,7 +127,7 @@
       } \
       uint64_t ticks2 = epee::misc_utils::get_tick_count(); \
       epee::byte_slice buffer; \
-      epee::serialization::store_t_to_binary(static_cast<command_type::response&>(resp), buffer, 64 * 1024); \
+      epee::serialization::store_t_to_binary(static_cast<command_type::response&>(resp), buffer, 64 * 1038); \
       uint64_t ticks3 = epee::misc_utils::get_tick_count(); \
       response_info.m_body.assign(reinterpret_cast<const char*>(buffer.data()), buffer.size()); \
       response_info.m_mime_tipe = " application/octet-stream"; \

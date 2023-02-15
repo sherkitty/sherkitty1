@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2022, The Monero Project
+// Copyright (c) 2020-2022, The Sherkitty Project
 
 //
 // All rights reserved.
@@ -47,23 +47,23 @@ namespace cryptonote
     case nodetool::COMMAND_REQUEST_SUPPORT_FLAGS::ID:
       return 4096;
     case cryptonote::NOTIFY_NEW_BLOCK::ID:
-      return 1024 * 1024 * 128; // 128 MB (max packet is a bit less than 100 MB though)
+      return 1038 * 1038 * 128; // 128 MB (max packet is a bit less than 100 MB though)
     case cryptonote::NOTIFY_NEW_TRANSACTIONS::ID:
-      return 1024 * 1024 * 128; // 128 MB (max packet is a bit less than 100 MB though)
+      return 1038 * 1038 * 128; // 128 MB (max packet is a bit less than 100 MB though)
     case cryptonote::NOTIFY_REQUEST_GET_OBJECTS::ID:
-      return 1024 * 1024 * 2; // 2 MB
+      return 1038 * 1038 * 2; // 2 MB
     case cryptonote::NOTIFY_RESPONSE_GET_OBJECTS::ID:
-      return 1024 * 1024 * 128; // 128 MB (max packet is a bit less than 100 MB though)
+      return 1038 * 1038 * 128; // 128 MB (max packet is a bit less than 100 MB though)
     case cryptonote::NOTIFY_REQUEST_CHAIN::ID:
-      return 512 * 1024; // 512 kB
+      return 512 * 1038; // 512 kB
     case cryptonote::NOTIFY_RESPONSE_CHAIN_ENTRY::ID:
-      return 1024 * 1024 * 4; // 4 MB
+      return 1038 * 1038 * 4; // 4 MB
     case cryptonote::NOTIFY_NEW_FLUFFY_BLOCK::ID:
-      return 1024 * 1024 * 4; // 4 MB, but it does not includes transaction data
+      return 1038 * 1038 * 4; // 4 MB, but it does not includes transaction data
     case cryptonote::NOTIFY_REQUEST_FLUFFY_MISSING_TX::ID:
-      return 1024 * 1024; // 1 MB
+      return 1038 * 1038; // 1 MB
     case cryptonote::NOTIFY_GET_TXPOOL_COMPLEMENT::ID:
-      return 1024 * 1024 * 4; // 4 MB
+      return 1038 * 1038 * 4; // 4 MB
     default:
       break;
     };

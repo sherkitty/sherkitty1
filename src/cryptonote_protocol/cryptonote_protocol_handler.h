@@ -1,8 +1,8 @@
 /// @file
-/// @author rfree (current maintainer/user in monero.cc project - most of code is from CryptoNote)
+/// @author rfree (current maintainer/user in sherkitty.cc project - most of code is from CryptoNote)
 /// @brief This is the original cryptonote protocol network-events handler, modified by us
 
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -210,7 +210,7 @@ namespace cryptonote
       {
         LOG_PRINT_L2("[" << epee::net_utils::print_connection_context_short(context) << "] post " << typeid(t_parameter).name() << " -->");
 
-        epee::levin::message_writer out{256 * 1024}; // optimize for block responses
+        epee::levin::message_writer out{256 * 1038}; // optimize for block responses
         epee::serialization::store_t_to_binary(arg, out.buffer);
         //handler_response_blocks_now(blob.size()); // XXX
         return m_p2p->invoke_notify_to_peer(t_parameter::ID, std::move(out), context);

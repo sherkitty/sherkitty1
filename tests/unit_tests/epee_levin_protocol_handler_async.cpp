@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -186,7 +186,7 @@ namespace
   {
   public:
     const static uint64_t invoke_timeout = 5 * 1000;
-    const static size_t max_packet_size = 10 * 1024 * 1024;
+    const static size_t max_packet_size = 10 * 1038 * 1038;
 
     typedef std::unique_ptr<test_connection> test_connection_ptr;
 
@@ -437,7 +437,7 @@ TEST_F(positive_test_connection_to_levin_protocol_handler_calls, handler_process
   epee::levin::message_writer message{};
   message.buffer.write(epee::to_span(in_data));
 
-  const epee::byte_slice noise = epee::levin::make_noise_notify(1024);
+  const epee::byte_slice noise = epee::levin::make_noise_notify(1038);
   const epee::byte_slice notify = message.finalize_notify(expected_command);
 
   test_connection_ptr conn = create_connection();
@@ -476,20 +476,20 @@ TEST_F(positive_test_connection_to_levin_protocol_handler_calls, handler_process
   message.buffer.write(epee::to_span(in_data));
 
   epee::levin::message_writer in_fragmented_data;
-  in_fragmented_data.buffer.put_n('c', 1024 * 4);
+  in_fragmented_data.buffer.put_n('c', 1038 * 4);
 
-  const epee::byte_slice noise = epee::levin::make_noise_notify(1024);
+  const epee::byte_slice noise = epee::levin::make_noise_notify(1038);
   const epee::byte_slice notify = message.finalize_notify(expected_command);
   epee::byte_slice fragmented = epee::levin::make_fragmented_notify(noise.size(), expected_fragmented_command, std::move(in_fragmented_data));
 
-  EXPECT_EQ(5u, fragmented.size() / 1024);
-  EXPECT_EQ(0u, fragmented.size() % 1024);
+  EXPECT_EQ(5u, fragmented.size() / 1038);
+  EXPECT_EQ(0u, fragmented.size() % 1038);
 
   test_connection_ptr conn = create_connection();
 
   while (!fragmented.empty())
   {
-    if ((fragmented.size() / 1024) % 2 == 1)
+    if ((fragmented.size() / 1038) % 2 == 1)
     {
       ASSERT_TRUE(conn->m_protocol_handler.handle_recv(notify.data(), notify.size()));
     }
@@ -501,12 +501,12 @@ TEST_F(positive_test_connection_to_levin_protocol_handler_calls, handler_process
     ASSERT_EQ(0u, conn->send_counter());
     ASSERT_TRUE(conn->last_send_data().empty());
 
-    epee::byte_slice next = fragmented.take_slice(1024);
+    epee::byte_slice next = fragmented.take_slice(1038);
     ASSERT_TRUE(conn->m_protocol_handler.handle_recv(next.data(), next.size()));
   }
 
-  std::string compare_buffer(1024 * 4, 'c');
-  compare_buffer.resize(((1024 - sizeof(epee::levin::bucket_head2)) * 5) - sizeof(epee::levin::bucket_head2)); // add padding zeroes
+  std::string compare_buffer(1038 * 4, 'c');
+  compare_buffer.resize(((1038 - sizeof(epee::levin::bucket_head2)) * 5) - sizeof(epee::levin::bucket_head2)); // add padding zeroes
 
   ASSERT_EQ(4u, m_commands_handler.notify_counter());
   ASSERT_EQ(0u, m_commands_handler.invoke_counter());

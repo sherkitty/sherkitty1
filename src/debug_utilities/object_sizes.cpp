@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -44,8 +44,8 @@
 #include "wallet/api/unsigned_transaction.h"
 #include "wallet/api/pending_transaction.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "debugtools.objectsizes"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "debugtools.objectsizes"
 
 class size_logger
 {
@@ -110,12 +110,12 @@ int main(int argc, char* argv[])
   SL(tools::wallet2::unsigned_tx_set);
   SL(tools::wallet2::signed_tx_set);
 
-  SL(Monero::WalletImpl);
-  SL(Monero::AddressBookRow);
-  SL(Monero::TransactionInfoImpl);
-  SL(Monero::TransactionHistoryImpl);
-  SL(Monero::PendingTransactionImpl);
-  SL(Monero::UnsignedTransactionImpl);
+  SL(Sherkitty::WalletImpl);
+  SL(Sherkitty::AddressBookRow);
+  SL(Sherkitty::TransactionInfoImpl);
+  SL(Sherkitty::TransactionHistoryImpl);
+  SL(Sherkitty::PendingTransactionImpl);
+  SL(Sherkitty::UnsignedTransactionImpl);
 
   return 0;
 }

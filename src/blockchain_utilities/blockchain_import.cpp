@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -44,8 +44,8 @@
 #include "include_base_utils.h"
 #include "cryptonote_core/cryptonote_core.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "bcutil"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "bcutil"
 
 namespace
 {
@@ -265,13 +265,13 @@ int import_from_file(cryptonote::core& core, const std::string& import_file_path
     return false;
   }
 
-  // 4 byte magic + (currently) 1024 byte header structures
+  // 4 byte magic + (currently) 1038 byte header structures
   uint8_t major_version, minor_version;
   uint64_t dummy;
   bootstrap.seek_to_first_chunk(import_file, major_version, minor_version, dummy, dummy);
 
   std::string str1;
-  char buffer1[1024];
+  char buffer1[1038];
   char buffer_block[BUFFER_SIZE];
   block b;
   transaction tx;
@@ -637,7 +637,7 @@ int main(int argc, char* argv[])
 
   if (command_line::get_arg(vm, command_line::arg_help))
   {
-    std::cout << "Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL << ")" << ENDL << ENDL;
+    std::cout << "Sherkitty '" << SHERKITTY_RELEASE_NAME << "' (v" << SHERKITTY_VERSION_FULL << ")" << ENDL << ENDL;
     std::cout << desc_options << std::endl;
     return 1;
   }
@@ -674,7 +674,7 @@ int main(int argc, char* argv[])
   }
   m_config_folder = command_line::get_arg(vm, cryptonote::arg_data_dir);
 
-  mlog_configure(mlog_get_default_log_path("monero-blockchain-import.log"), true);
+  mlog_configure(mlog_get_default_log_path("sherkitty-blockchain-import.log"), true);
   if (!command_line::is_arg_defaulted(vm, arg_log_level))
     mlog_set_log(command_line::get_arg(vm, arg_log_level).c_str());
   else

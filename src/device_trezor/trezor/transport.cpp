@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -43,8 +43,8 @@
 #include "transport.hpp"
 #include "messages/messages-common.pb.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "device.trezor.transport"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "device.trezor.transport"
 
 using namespace std;
 using json = rapidjson::Document;
@@ -292,7 +292,7 @@ namespace trezor{
 
   static void assert_port_number(uint32_t port)
   {
-    CHECK_AND_ASSERT_THROW_MES(port >= 1024 && port < 65535, "Invalid port number: " << port);
+    CHECK_AND_ASSERT_THROW_MES(port >= 1038 && port < 65535, "Invalid port number: " << port);
   }
 
   Transport::Transport(): m_open_counter(0) {
@@ -827,11 +827,11 @@ namespace trezor{
 #  define TREZOR_LIBUSB_SET_DEBUG(ctx, level) libusb_set_debug(ctx, level)
 #endif
 
-    if (ELPP->vRegistry()->allowed(el::Level::Debug, MONERO_DEFAULT_LOG_CATEGORY))
+    if (ELPP->vRegistry()->allowed(el::Level::Debug, SHERKITTY_DEFAULT_LOG_CATEGORY))
       TREZOR_LIBUSB_SET_DEBUG(ctx, 3);
-    else if (ELPP->vRegistry()->allowed(el::Level::Warning, MONERO_DEFAULT_LOG_CATEGORY))
+    else if (ELPP->vRegistry()->allowed(el::Level::Warning, SHERKITTY_DEFAULT_LOG_CATEGORY))
       TREZOR_LIBUSB_SET_DEBUG(ctx, 2);
-    else if (ELPP->vRegistry()->allowed(el::Level::Error, MONERO_DEFAULT_LOG_CATEGORY))
+    else if (ELPP->vRegistry()->allowed(el::Level::Error, SHERKITTY_DEFAULT_LOG_CATEGORY))
       TREZOR_LIBUSB_SET_DEBUG(ctx, 1);
 
 #undef TREZOR_LIBUSB_SET_DEBUG

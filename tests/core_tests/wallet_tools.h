@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -62,7 +62,7 @@ public:
 class WalletApiAccessorTest
 {
 public:
-  static void allow_mismatched_daemon_version(Monero::WalletImpl * wallet, bool allow_mismatch) { wallet->m_wallet->allow_mismatched_daemon_version(allow_mismatch); }
+  static void allow_mismatched_daemon_version(Sherkitty::WalletImpl * wallet, bool allow_mismatch) { wallet->m_wallet->allow_mismatched_daemon_version(allow_mismatch); }
 };
 
 class wallet_tools

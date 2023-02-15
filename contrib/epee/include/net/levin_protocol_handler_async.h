@@ -43,8 +43,8 @@
 #include <random>
 #include <chrono>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net"
 
 #ifndef MIN_BYTES_WANTED
 #define MIN_BYTES_WANTED	512
@@ -310,7 +310,7 @@ public:
             m_config(config), 
             m_connection_context(conn_context),
             m_max_packet_size(config.m_initial_max_packet_size),
-            m_cache_in_buffer(4 * 1024),
+            m_cache_in_buffer(4 * 1038),
             m_state(stream_state_head)
   {
     m_close_called = 0;
@@ -541,7 +541,7 @@ public:
           {
             if(m_current_head.m_have_to_return_data)
             {
-              levin::message_writer return_message{32 * 1024};
+              levin::message_writer return_message{32 * 1038};
               const uint32_t return_code = m_config.m_pcommands_handler->invoke(
                 m_current_head.m_command, buff_to_invoke, return_message.buffer, m_connection_context
               );
@@ -557,7 +557,7 @@ public:
               m_config.m_pcommands_handler->notify(m_current_head.m_command, buff_to_invoke, m_connection_context);
           }
           // reuse small buffer
-          if (!temp.empty() && temp.capacity() <= 64 * 1024)
+          if (!temp.empty() && temp.capacity() <= 64 * 1038)
           {
             temp.clear();
             m_fragment_buffer = std::move(temp);

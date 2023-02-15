@@ -1,8 +1,8 @@
 /// @file
-/// @author rfree (current maintainer/user in monero.cc project - most of code is from CryptoNote)
+/// @author rfree (current maintainer/user in sherkitty.cc project - most of code is from CryptoNote)
 /// @brief This is the original cryptonote protocol network-events handler, modified by us
 
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -44,8 +44,8 @@
 #include "common/pruning.h"
 #include "common/util.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.cn"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net.cn"
 
 #define MLOG_P2P_MESSAGE(x) MCINFO("net.p2p.msg", context << x)
 #define MLOGIF_P2P_MESSAGE(init, test, x) \
@@ -60,10 +60,10 @@
   } while(0)
 
 #define MLOG_PEER_STATE(x) \
-  MCINFO(MONERO_DEFAULT_LOG_CATEGORY, context << "[" << epee::string_tools::to_string_hex(context.m_pruning_seed) << "] state: " << x << " in state " << cryptonote::get_protocol_state_string(context.m_state))
+  MCINFO(SHERKITTY_DEFAULT_LOG_CATEGORY, context << "[" << epee::string_tools::to_string_hex(context.m_pruning_seed) << "] state: " << x << " in state " << cryptonote::get_protocol_state_string(context.m_state))
 
 #define BLOCK_QUEUE_NSPANS_THRESHOLD 10 // chunks of N blocks
-#define BLOCK_QUEUE_SIZE_THRESHOLD (100*1024*1024) // MB
+#define BLOCK_QUEUE_SIZE_THRESHOLD (100*1038*1038) // MB
 #define BLOCK_QUEUE_FORCE_DOWNLOAD_NEAR_BLOCKS 1000
 #define REQUEST_NEXT_SCHEDULED_SPAN_THRESHOLD_STANDBY (5 * 1000000) // microseconds
 #define REQUEST_NEXT_SCHEDULED_SPAN_THRESHOLD (30 * 1000000) // microseconds
@@ -229,22 +229,22 @@ namespace cryptonote
         << std::setw(30) << std::to_string(cntxt.m_recv_cnt)+ "(" + std::to_string(time(NULL) - cntxt.m_last_recv) + ")" + "/" + std::to_string(cntxt.m_send_cnt) + "(" + std::to_string(time(NULL) - cntxt.m_last_send) + ")"
         << std::setw(25) << get_protocol_state_string(cntxt.m_state)
         << std::setw(20) << std::to_string(time(NULL) - cntxt.m_started)
-        << std::setw(12) << std::fixed << (connection_time == 0 ? 0.0 : cntxt.m_recv_cnt / connection_time / 1024)
-        << std::setw(14) << std::fixed << cntxt.m_current_speed_down / 1024
-        << std::setw(10) << std::fixed << (connection_time == 0 ? 0.0 : cntxt.m_send_cnt / connection_time / 1024)
-        << std::setw(13) << std::fixed << cntxt.m_current_speed_up / 1024
+        << std::setw(12) << std::fixed << (connection_time == 0 ? 0.0 : cntxt.m_recv_cnt / connection_time / 1038)
+        << std::setw(14) << std::fixed << cntxt.m_current_speed_down / 1038
+        << std::setw(10) << std::fixed << (connection_time == 0 ? 0.0 : cntxt.m_send_cnt / connection_time / 1038)
+        << std::setw(13) << std::fixed << cntxt.m_current_speed_up / 1038
         << (local_ip ? "[LAN]" : "")
         << std::left << (cntxt.m_remote_address.is_loopback() ? "[LOCALHOST]" : "") // 127.0.0.1
         << ENDL;
 
       if (connection_time > 1)
       {
-        down_sum += (cntxt.m_recv_cnt / connection_time / 1024);
-        up_sum += (cntxt.m_send_cnt / connection_time / 1024);
+        down_sum += (cntxt.m_recv_cnt / connection_time / 1038);
+        up_sum += (cntxt.m_send_cnt / connection_time / 1038);
       }
 
-      down_curr_sum += (cntxt.m_current_speed_down / 1024);
-      up_curr_sum += (cntxt.m_current_speed_up / 1024);
+      down_curr_sum += (cntxt.m_current_speed_down / 1038);
+      up_curr_sum += (cntxt.m_current_speed_up / 1038);
 
       return true;
     });
@@ -310,12 +310,12 @@ namespace cryptonote
 
       else
       {
-        cnx.avg_download = cntxt.m_recv_cnt / connection_time / 1024;
-        cnx.avg_upload = cntxt.m_send_cnt / connection_time / 1024;
+        cnx.avg_download = cntxt.m_recv_cnt / connection_time / 1038;
+        cnx.avg_upload = cntxt.m_send_cnt / connection_time / 1038;
       }
 
-      cnx.current_download = cntxt.m_current_speed_down / 1024;
-      cnx.current_upload = cntxt.m_current_speed_up / 1024;
+      cnx.current_download = cntxt.m_current_speed_down / 1038;
+      cnx.current_upload = cntxt.m_current_speed_up / 1038;
 
       cnx.connection_id = epee::string_tools::pod_to_hex(cntxt.m_connection_id);
       cnx.ssl = cntxt.m_ssl;
@@ -587,11 +587,11 @@ namespace cryptonote
       have_tx.reserve(new_block.tx_hashes.size());
 
       // Instead of requesting missing transactions by hash like BTC, 
-      // we do it by index (thanks to a suggestion from moneromooo) because
+      // we do it by index (thanks to a suggestion from sherkittymooo) because
       // we're way cooler .. and also because they're smaller than hashes.
       // 
       // Also, remember to pepper some whitespace changes around to bother
-      // moneromooo ... only because I <3 him. 
+      // sherkittymooo ... only because I <3 him. 
       std::vector<uint64_t> need_tx_indices;
       need_tx_indices.reserve(new_block.tx_hashes.size());
         
@@ -632,7 +632,7 @@ namespace cryptonote
           }
           
           // hijacking m_requested objects in connection context to patch up
-          // a possible DOS vector pointed out by @monero-moo where peers keep
+          // a possible DOS vector pointed out by @sherkitty-moo where peers keep
           // sending (0...n-1) transactions.
           // If requested objects is not empty, then we must have asked for 
           // some missing transacionts, make sure that they're all there.
@@ -676,7 +676,7 @@ namespace cryptonote
             // future todo: 
             // tx should only not be added to pool if verification failed, but
             // maybe in the future could not be added for other reasons 
-            // according to monero-moo so keep track of these separately ..
+            // according to sherkitty-moo so keep track of these separately ..
             //
           }
         }
@@ -1157,7 +1157,7 @@ namespace cryptonote
       auto time_from_epoh = point.time_since_epoch();
       auto sec = duration_cast< seconds >( time_from_epoh ).count();*/
 
-    //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-monero/net/req-all.data", sec, get_avg_block_size());
+    //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-sherkitty/net/req-all.data", sec, get_avg_block_size());
 
     if(arg.blocks.empty())
     {
@@ -1311,7 +1311,7 @@ namespace cryptonote
       // add that new span to the block queue
       const boost::posix_time::time_duration dt = now - request_time;
       const float rate = size * 1e6 / (dt.total_microseconds() + 1);
-      MDEBUG(context << " adding span: " << arg.blocks.size() << " at height " << start_height << ", " << dt.total_microseconds()/1e6 << " seconds, " << (rate/1024) << " kB/s, size now " << (m_block_queue.get_data_size() + blocks_size) / 1048576.f << " MB");
+      MDEBUG(context << " adding span: " << arg.blocks.size() << " at height " << start_height << ", " << dt.total_microseconds()/1e6 << " seconds, " << (rate/1038) << " kB/s, size now " << (m_block_queue.get_data_size() + blocks_size) / 1048576.f << " MB");
       m_block_queue.add_blocks(start_height, arg.blocks, context.m_connection_id, context.m_remote_address, rate, blocks_size);
 
       const crypto::hash last_block_hash = cryptonote::get_block_hash(b);
@@ -1348,7 +1348,7 @@ namespace cryptonote
     cryptonote::network_type nettype = m_core.get_nettype();
 
     // Don't simply use remaining number of blocks for the estimate but "sync weight" as provided by
-    // "cumulative_block_sync_weight" which knows about strongly varying Monero mainnet block sizes
+    // "cumulative_block_sync_weight" which knows about strongly varying Sherkitty mainnet block sizes
     uint64_t synced_weight = tools::cumulative_block_sync_weight(nettype, m_sync_start_height, current_blockchain_height - m_sync_start_height);
     float us_per_weight = (float)sync_time.total_microseconds() / (float)synced_weight;
     uint64_t remaining_weight = tools::cumulative_block_sync_weight(nettype, current_blockchain_height, target_blockchain_height - current_blockchain_height);
@@ -2351,7 +2351,7 @@ skip:
         context.m_expect_response = NOTIFY_RESPONSE_GET_OBJECTS::ID;
         MLOG_P2P_MESSAGE("-->>NOTIFY_REQUEST_GET_OBJECTS: blocks.size()=" << req.blocks.size()
             << "requested blocks count=" << count << " / " << count_limit << " from " << span.first << ", first hash " << req.blocks.front());
-        //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-monero/net/req-all.data", sec, get_avg_block_size());
+        //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-sherkitty/net/req-all.data", sec, get_avg_block_size());
 
         MDEBUG("Asking for " << (req.prune ? "pruned" : "full") << " data, start/end "
           << tools::get_pruning_stripe(span.first, context.m_remote_blockchain_height, CRYPTONOTE_PRUNING_LOG_STRIPES)
@@ -2426,7 +2426,7 @@ skip:
 
       //std::string blob; // for calculate size of request
       //epee::serialization::store_t_to_binary(r, blob);
-      //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-monero/net/req-all.data", sec, get_avg_block_size());
+      //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-sherkitty/net/req-all.data", sec, get_avg_block_size());
       //LOG_PRINT_CCONTEXT_L1("r = " << 200);
 
       context.m_last_request_time = boost::posix_time::microsec_clock::universal_time();
@@ -2484,7 +2484,7 @@ skip:
         }
       }
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
-        << "You are now synchronized with the network. You may now start monero-wallet-cli." << ENDL
+        << "You are now synchronized with the network. You may now start sherkitty-wallet-cli." << ENDL
         << ENDL
         << "Use the \"help\" command to see the list of available commands." << ENDL
         << "**********************************************************************");
@@ -2497,8 +2497,8 @@ skip:
         {
           MCLOG_YELLOW(el::Level::Info, "sync-info", "Sync time: " << sync_time/1e9/60 << " min, idle time " <<
               (100.f * (1.0f - add_time / (float)sync_time)) << "%" << ", " <<
-              (10 * m_sync_download_objects_size / 1024 / 1024) / 10.f << " + " <<
-              (10 * m_sync_download_chain_size / 1024 / 1024) / 10.f << " MB downloaded, " <<
+              (10 * m_sync_download_objects_size / 1038 / 1038) / 10.f << " + " <<
+              (10 * m_sync_download_chain_size / 1038 / 1038) / 10.f << " MB downloaded, " <<
               100.0f * m_sync_old_spans_downloaded / m_sync_spans_downloaded << "% old spans, " <<
               100.0f * m_sync_bad_spans_downloaded / m_sync_spans_downloaded << "% bad spans");
         }
@@ -2740,13 +2740,13 @@ skip:
     // send fluffy ones first, we want to encourage people to run that
     if (!fluffyConnections.empty())
     {
-      epee::levin::message_writer fluffyBlob{32 * 1024};
+      epee::levin::message_writer fluffyBlob{32 * 1038};
       epee::serialization::store_t_to_binary(fluffy_arg, fluffyBlob.buffer);
       m_p2p->relay_notify_to_list(NOTIFY_NEW_FLUFFY_BLOCK::ID, std::move(fluffyBlob), std::move(fluffyConnections));
     }
     if (!fullConnections.empty())
     {
-      epee::levin::message_writer fullBlob{128 * 1024};
+      epee::levin::message_writer fullBlob{128 * 1038};
       epee::serialization::store_t_to_binary(arg, fullBlob.buffer);
       m_p2p->relay_notify_to_list(NOTIFY_NEW_BLOCK::ID, std::move(fullBlob), std::move(fullConnections));
     }
@@ -2936,7 +2936,7 @@ skip:
       m_core.set_target_blockchain_height(target);
       if (target == 0 && context.m_state > cryptonote_connection_context::state_before_handshake && !m_stopping)
       {
-        MCWARNING("global", "monerod is now disconnected from the network");
+        MCWARNING("global", "sherkittyd is now disconnected from the network");
         m_ask_for_txpool_complement = true;
       }
     }

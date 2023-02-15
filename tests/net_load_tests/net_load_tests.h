@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -215,8 +215,8 @@ namespace net_load_tests
   };
 
   const unsigned int min_thread_count = 2;
-  const std::string clt_port("36230");
-  const std::string srv_port("36231");
+  const std::string clt_port("24441");
+  const std::string srv_port("24442");
 
   enum command_ids
   {

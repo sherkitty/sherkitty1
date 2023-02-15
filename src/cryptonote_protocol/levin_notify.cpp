@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2022, The Monero Project
+// Copyright (c) 2019-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -48,8 +48,8 @@
 #include "net/dandelionpp.h"
 #include "p2p/net_node.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.p2p.tx"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net.p2p.tx"
 
 namespace cryptonote
 {
@@ -172,7 +172,7 @@ namespace levin
           bytes += tools::get_varint_data(tx_blob_it->size()).size() + tx_blob_it->size();
 
         // stuff some dummy bytes in to stay safe from traffic volume analysis
-        static constexpr const size_t granularity = 1024;
+        static constexpr const size_t granularity = 1038;
         size_t padding = granularity - bytes % granularity;
         const size_t overhead = 2 /* 1 + '_' */ + tools::get_varint_data(padding).size();
         if (overhead > padding)

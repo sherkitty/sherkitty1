@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2022, The Monero Project
+// Copyright (c) 2019-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -35,7 +35,7 @@
 
 #define INIT_MEMPOOL_TEST()                                   \
   uint64_t send_amount = 1000;                                \
-  uint64_t ts_start = 1338224400;                             \
+  uint64_t ts_start = 0;                             \
   GENERATE_ACCOUNT(miner_account);                            \
   GENERATE_ACCOUNT(bob_account);                              \
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start); \

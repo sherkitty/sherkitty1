@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -43,8 +43,8 @@
 #include <ctime>
 #include <string>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "daemon"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "daemon"
 
 namespace daemonize {
 
@@ -614,8 +614,8 @@ bool t_rpc_command_executor::mining_status() {
     uint64_t daily = 86400ull / mres.block_target * mres.block_reward * ratio;
     uint64_t monthly = 86400ull / mres.block_target * 30.5 * mres.block_reward * ratio;
     uint64_t yearly = 86400ull / mres.block_target * 356 * mres.block_reward * ratio;
-    tools::msg_writer() << "Expected: " << cryptonote::print_money(daily) << " monero daily, "
-        << cryptonote::print_money(monthly) << " monero monthly, " << cryptonote::print_money(yearly) << " yearly";
+    tools::msg_writer() << "Expected: " << cryptonote::print_money(daily) << " sherkitty daily, "
+        << cryptonote::print_money(monthly) << " sherkitty monthly, " << cryptonote::print_money(yearly) << " yearly";
   }
 
   return true;
@@ -723,7 +723,7 @@ bool t_rpc_command_executor::print_net_stats()
 
   uint64_t seconds = (uint64_t)time(NULL) - net_stats_res.start_time;
   uint64_t average = seconds > 0 ? net_stats_res.total_bytes_in / seconds : 0;
-  uint64_t limit = limit_res.limit_down * 1024;   // convert to bytes, as limits are always kB/s
+  uint64_t limit = limit_res.limit_down * 1038;   // convert to bytes, as limits are always kB/s
   double percent = (double)average / (double)limit * 100.0;
   tools::success_msg_writer() << boost::format("Received %u bytes (%s) in %u packets in %s, average %s/s = %.2f%% of the limit of %s/s")
     % net_stats_res.total_bytes_in
@@ -735,7 +735,7 @@ bool t_rpc_command_executor::print_net_stats()
     % tools::get_human_readable_bytes(limit);
 
   average = seconds > 0 ? net_stats_res.total_bytes_out / seconds : 0;
-  limit = limit_res.limit_up * 1024;
+  limit = limit_res.limit_up * 1038;
   percent = (double)average / (double)limit * 100.0;
   tools::success_msg_writer() << boost::format("Sent %u bytes (%s) in %u packets in %s, average %s/s = %.2f%% of the limit of %s/s")
     % net_stats_res.total_bytes_out
@@ -1414,8 +1414,8 @@ bool t_rpc_command_executor::stop_daemon()
 //# ifdef WIN32
 //    // Stop via service API
 //    // TODO - this is only temporary!  Get rid of hard-coded constants!
-//    bool ok = windows::stop_service("BitMonero Daemon");
-//    ok = windows::uninstall_service("BitMonero Daemon");
+//    bool ok = windows::stop_service("BitSherkitty Daemon");
+//    ok = windows::uninstall_service("BitSherkitty Daemon");
 //    //bool ok = windows::stop_service(SERVICE_NAME);
 //    //ok = windows::uninstall_service(SERVICE_NAME);
 //    if (ok)
@@ -1459,10 +1459,10 @@ bool t_rpc_command_executor::print_status()
   bool daemon_is_alive = m_rpc_client->check_connection();
 
   if(daemon_is_alive) {
-    tools::success_msg_writer() << "monerod is running";
+    tools::success_msg_writer() << "sherkittyd is running";
   }
   else {
-    tools::fail_msg_writer() << "monerod is NOT running";
+    tools::fail_msg_writer() << "sherkittyd is NOT running";
   }
 
   return true;

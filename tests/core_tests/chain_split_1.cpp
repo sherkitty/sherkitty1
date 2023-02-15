@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -59,7 +59,7 @@ gen_simple_chain_split_1::gen_simple_chain_split_1()
 //-----------------------------------------------------------------------------------------------------
 bool gen_simple_chain_split_1::generate(std::vector<test_event_entry> &events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
   /*
    1    2    3    4    5    6     7     8      9    10    11    12    13    14    15    16    17    18   19   20     21    22    23   <-- main blockchain height
   (0 )-(1 )-(2 )-(3 )-(4 )-(5 ) -(6 ) -(7 ) -(8 )|-(17) -(18) -(19) -(20) -(21)|-(22)|-(23)|-(24)|

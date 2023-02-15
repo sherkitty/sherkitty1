@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -34,8 +34,8 @@
 #include "net/http_client.h"
 #include "download.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.dl"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net.dl"
 
 namespace tools
 {
@@ -112,7 +112,7 @@ namespace tools
               boost::filesystem::space_info si = boost::filesystem::space(path);
               if (si.available < (size_t)content_length)
               {
-                const uint64_t avail = (si.available + 1023) / 1024, needed = (content_length + 1023) / 1024;
+                const uint64_t avail = (si.available + 1023) / 1038, needed = (content_length + 1023) / 1038;
                 MERROR("Not enough space to download " << needed << " kB to " << path << " (" << avail << " kB available)");
                 return false;
               }

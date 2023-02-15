@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -41,8 +41,8 @@
 #include "wallet/ringdb.h"
 #include "version.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "bcutil"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "bcutil"
 
 namespace po = boost::program_options;
 using namespace epee;
@@ -130,7 +130,7 @@ static bool parse_db_sync_mode(std::string db_sync_mode)
 static std::string get_default_db_path()
 {
   boost::filesystem::path dir = tools::get_default_data_dir();
-  // remove .bitmonero, replace with .shared-ringdb
+  // remove .bitsherkitty, replace with .shared-ringdb
   dir = dir.remove_filename();
   dir /= ".shared-ringdb";
   return dir.string();
@@ -183,7 +183,7 @@ static int resize_env(const char *db_path)
   MDB_stat mst;
   int ret;
 
-  size_t needed = 1000ul * 1024 * 1024; // at least 1000 MB
+  size_t needed = 1000ul * 1038 * 1038; // at least 1000 MB
 
   ret = mdb_env_info(env, &mei);
   if (ret)
@@ -959,7 +959,7 @@ static void open_db(const std::string &filename, MDB_env **env, MDB_txn **txn, M
   dbr = mdb_env_set_maxdbs(*env, 1);
   CHECK_AND_ASSERT_THROW_MES(!dbr, "Failed to set max env dbs: " + std::string(mdb_strerror(dbr)));
   const std::string actual_filename = filename;
-  MINFO("Opening monero blockchain at " << actual_filename);
+  MINFO("Opening sherkitty blockchain at " << actual_filename);
   dbr = mdb_env_open(*env, actual_filename.c_str(), flags, 0664);
   CHECK_AND_ASSERT_THROW_MES(!dbr, "Failed to open rings database file '"
       + actual_filename + "': " + std::string(mdb_strerror(dbr)));
@@ -1176,7 +1176,7 @@ int main(int argc, char* argv[])
   const command_line::arg_descriptor<bool> arg_rct_only  = {"rct-only", "Only work on ringCT outputs", false};
   const command_line::arg_descriptor<bool> arg_check_subsets  = {"check-subsets", "Check ring subsets (very expensive)", false};
   const command_line::arg_descriptor<bool> arg_verbose  = {"verbose", "Verbose output)", false};
-  const command_line::arg_descriptor<std::vector<std::string> > arg_inputs = {"inputs", "Path to Monero DB, and path to any fork DBs"};
+  const command_line::arg_descriptor<std::vector<std::string> > arg_inputs = {"inputs", "Path to Sherkitty DB, and path to any fork DBs"};
   const command_line::arg_descriptor<std::string> arg_db_sync_mode = {
     "db-sync-mode"
   , "Specify sync option, using format [safe|fast|fastest]:[nrecords_per_sync]." 
@@ -1219,12 +1219,12 @@ int main(int argc, char* argv[])
 
   if (command_line::get_arg(vm, command_line::arg_help))
   {
-    std::cout << "Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL << ")" << ENDL << ENDL;
+    std::cout << "Sherkitty '" << SHERKITTY_RELEASE_NAME << "' (v" << SHERKITTY_VERSION_FULL << ")" << ENDL << ENDL;
     std::cout << desc_options << std::endl;
     return 1;
   }
 
-  mlog_configure(mlog_get_default_log_path("monero-blockchain-mark-spent-outputs.log"), true);
+  mlog_configure(mlog_get_default_log_path("sherkitty-blockchain-mark-spent-outputs.log"), true);
   if (!command_line::is_arg_defaulted(vm, arg_log_level))
     mlog_set_log(command_line::get_arg(vm, arg_log_level).c_str());
   else

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -36,8 +36,8 @@
 
 #include "lmdb/db_lmdb.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "blockchain.db"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "blockchain.db"
 
 using epee::string_tools::pod_to_hex;
 
@@ -547,7 +547,7 @@ void BlockchainDB::fixup()
       "953f855323f72461b7167e3df0f4fd746a06f5a7f98aa42acdce2eef822a0b2f",
       "0931932d57dde94dcfb017179a5a0954b7d671422149738260a365ca44f50eb8",
       "a3d179d16a4a275a3bb0f260cee9284db243abad637a9dbe92d02940f1c7ee8c",
-      "959843f1e76ff0785dafe312c2ea66380fdc32b9d6180920f05f874c74599a80",
+      "959843f1e76ff0785dafe312c2ea66380fdc32b9d6477020f05f874c74599a80",
       "fbc36b3e1718fe6c338968b04caa01a7adb315d206abc63e56768d69e008a65d",
       "f054de7eac5e2ea48072e7fb4db93594c5f5d2dfa0afe8266042b6adc80dfdca",
       "39dfc68dc6ba8c457b2995562c867cef2f2cf994e8d6776a6b20869e25053f70",
@@ -752,7 +752,7 @@ void BlockchainDB::fixup()
       "21bd2c9aae052a1c187947d2964f2be4afa7b30248409c41a75522e88a4e7977",
       "59326adab03416ec1d36699c18e5e4fa13ca1f2212d48c23bfdecb0be7263616",
       "bcf263d39457c0aef8ef42fd98f8131198ec4fb203155dd5bcd759e499a9ca5c",
-      "f1ad083bcd8c7630eef93336d8a971ae8ae37166a6a00ac39684420c5f9afef8",
+      "f1ad083bcd8c7630eef93336d8a971ae8ae37166a6a00ac39689990c5f9afef8",
       "d82ee2ac41b36e3c1787a01835bf054070486dc20f6565efedbbc37cd3bf5fa5",
       "eba91a0dcbd3986299b0a3e66c116f77bd3421829291fd769522f01da26f107b",
       "11016558b7e8c6386c6a3e862691dcba47e33e257f0e7df38901ea7c0eba894c",

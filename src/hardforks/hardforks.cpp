@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -28,8 +28,8 @@
 
 #include "hardforks.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "blockchain.hardforks"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "blockchain.hardforks"
 
 const hardfork_t mainnet_hard_forks[] = {
   // version 1 from the start of the blockchain
@@ -68,8 +68,8 @@ const hardfork_t mainnet_hard_forks[] = {
   // version 12 starts from block 1978433, which is on or around the 30th of November, 2019. Fork time finalised on 2019-10-18.
   { 12, 1978433, 0, 1571419280 },
 
-  { 13, 2210000, 0, 1598180817 },
-  { 14, 2210720, 0, 1598180818 },
+  { 13, 2210000, 0, 1598569817 },
+  { 14, 2210720, 0, 1598569818 },
 
   { 15, 2688888, 0, 1656629117 },
   { 16, 2689608, 0, 1656629118 },
@@ -120,8 +120,8 @@ const hardfork_t stagenet_hard_forks[] = {
   { 10, 269000, 0, 1550153694 },
   { 11, 269720, 0, 1550225678 },
   { 12, 454721, 0, 1571419280 },
-  { 13, 675405, 0, 1598180817 },
-  { 14, 676125, 0, 1598180818 },
+  { 13, 675405, 0, 1598569817 },
+  { 14, 676125, 0, 1598569818 },
   { 15, 1151000, 0, 1656629117 },
   { 16, 1151720, 0, 1656629118 },
 };

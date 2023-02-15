@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -87,8 +87,8 @@ using namespace epee;
 #include <boost/format.hpp>
 #include <openssl/evp.h>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "util"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "util"
 
 namespace
 {
@@ -676,10 +676,10 @@ std::string get_nix_version_display_string()
   {
     ub_ctx *ctx = ub_ctx_create();
     if (!ctx) return false; // cheat a bit, should not happen unless OOM
-    char *monero = strdup("monero"), *unbound = strdup("unbound");
-    ub_ctx_zone_add(ctx, monero, unbound); // this calls ub_ctx_finalize first, then errors out with UB_SYNTAX
+    char *sherkitty = strdup("sherkitty"), *unbound = strdup("unbound");
+    ub_ctx_zone_add(ctx, sherkitty, unbound); // this calls ub_ctx_finalize first, then errors out with UB_SYNTAX
     free(unbound);
-    free(monero);
+    free(sherkitty);
     // if no threads, bails out early with UB_NOERROR, otherwise fails with UB_AFTERFINAL id already finalized
     bool with_threads = ub_ctx_async(ctx, 1) != 0; // UB_AFTERFINAL is not defined in public headers, check any error
     ub_ctx_delete(ctx);
@@ -1023,7 +1023,7 @@ std::string get_nix_version_display_string()
     GetConsoleMode(hConIn, &oldMode);
     SetConsoleMode(hConIn, ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT | ENABLE_PROCESSED_INPUT);
 
-    wchar_t buffer[1024];
+    wchar_t buffer[1038];
     DWORD read;
 
     ReadConsoleW(hConIn, buffer, sizeof(buffer)/sizeof(wchar_t)-1, &read, nullptr);
@@ -1107,8 +1107,8 @@ std::string get_nix_version_display_string()
 
   std::string get_human_readable_bytes(uint64_t bytes)
   {
-    // Use 1024 for "kilo", 1024*1024 for "mega" and so on instead of the more modern and standard-conforming
-    // 1000, 1000*1000 and so on, to be consistent with other Monero code that also uses base 2 units
+    // Use 1038 for "kilo", 1038*1038 for "mega" and so on instead of the more modern and standard-conforming
+    // 1000, 1000*1000 and so on, to be consistent with other Sherkitty code that also uses base 2 units
     struct byte_map
     {
         const char* const format;
@@ -1117,11 +1117,11 @@ std::string get_nix_version_display_string()
 
     static constexpr const byte_map sizes[] =
     {
-        {"%.0f B", 1024},
-        {"%.2f kB", 1024 * 1024},
-        {"%.2f MB", std::uint64_t(1024) * 1024 * 1024},
-        {"%.2f GB", std::uint64_t(1024) * 1024 * 1024 * 1024},
-        {"%.2f TB", std::uint64_t(1024) * 1024 * 1024 * 1024 * 1024}
+        {"%.0f B", 1038},
+        {"%.2f kB", 1038 * 1038},
+        {"%.2f MB", std::uint64_t(1038) * 1038 * 1038},
+        {"%.2f GB", std::uint64_t(1038) * 1038 * 1038 * 1038},
+        {"%.2f TB", std::uint64_t(1038) * 1038 * 1038 * 1038 * 1038}
     };
 
     struct bytes_less
@@ -1135,7 +1135,7 @@ std::string get_nix_version_display_string()
     const auto size = std::upper_bound(
         std::begin(sizes), std::end(sizes) - 1, byte_map{"", bytes}, bytes_less{}
     );
-    const std::uint64_t divisor = size->bytes / 1024;
+    const std::uint64_t divisor = size->bytes / 1038;
     return (boost::format(size->format) % (double(bytes) / divisor)).str();
   }
 
@@ -1309,7 +1309,7 @@ std::string get_nix_version_display_string()
       return num_blocks;
     }
 
-    // The following is a table of average blocks sizes in bytes over the Monero mainnet
+    // The following is a table of average blocks sizes in bytes over the Sherkitty mainnet
     // blockchain, where the block size is averaged over ranges of 10,000 blocks
     // (about 2 weeks worth of blocks each).
     // The first array entry of 442 thus means "The average byte size of the blocks

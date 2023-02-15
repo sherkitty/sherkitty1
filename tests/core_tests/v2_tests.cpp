@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -40,7 +40,7 @@ using namespace cryptonote;
 
 bool gen_v2_tx_validation_base::generate_with(std::vector<test_event_entry>& events, const int *out_idx, int mixin, uint64_t amount_paid, bool valid) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);

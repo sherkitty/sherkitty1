@@ -43,7 +43,7 @@ int main(int argc,char * argv[])
 	values = (int *)malloc(count*sizeof(int));
 
 	for(i = 0;i<count;i++) {
-		values[i] = rand()%1024;
+		values[i] = rand()%1038;
 	}
 
 	E(mdb_env_create(&env));

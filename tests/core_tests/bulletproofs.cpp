@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -46,7 +46,7 @@ bool gen_bp_tx_validation_base::generate_with(std::vector<test_event_entry>& eve
     const std::function<bool(std::vector<tx_source_entry> &sources, std::vector<tx_destination_entry> &destinations, size_t tx_idx)> &pre_tx,
     const std::function<bool(transaction &tx, size_t tx_idx)> &post_tx) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);

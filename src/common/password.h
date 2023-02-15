@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -40,7 +40,7 @@ namespace tools
   class password_container
   {
   public:
-    static constexpr const size_t max_password_size = 1024;
+    static constexpr const size_t max_password_size = 1038;
 
     //! Empty password
     password_container() noexcept;

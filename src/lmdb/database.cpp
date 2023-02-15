@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification, are
@@ -46,7 +46,7 @@ namespace lmdb
 {
     namespace
     {
-        constexpr const mdb_size_t max_resize = 1 * 1024 * 1024 * 1024; // 1 GB
+        constexpr const mdb_size_t max_resize = 1 * 1038 * 1038 * 1038; // 1 GB
         void acquire_context(context& ctx) noexcept
         {
             while (ctx.lock.test_and_set());
@@ -77,20 +77,20 @@ namespace lmdb
 
     expect<environment> open_environment(const char* path, MDB_dbi max_dbs) noexcept
     {
-        MONERO_PRECOND(path != nullptr);
+        SHERKITTY_PRECOND(path != nullptr);
 
         MDB_env* obj = nullptr;
-        MONERO_LMDB_CHECK(mdb_env_create(std::addressof(obj)));
+        SHERKITTY_LMDB_CHECK(mdb_env_create(std::addressof(obj)));
         environment out{obj};
 
-        MONERO_LMDB_CHECK(mdb_env_set_maxdbs(out.get(), max_dbs));
-        MONERO_LMDB_CHECK(mdb_env_open(out.get(), path, 0, open_flags));
+        SHERKITTY_LMDB_CHECK(mdb_env_set_maxdbs(out.get(), max_dbs));
+        SHERKITTY_LMDB_CHECK(mdb_env_open(out.get(), path, 0, open_flags));
         return {std::move(out)};
     }
 
     expect<write_txn> database::do_create_txn(unsigned int flags) noexcept
     {
-        MONERO_PRECOND(handle() != nullptr);
+        SHERKITTY_PRECOND(handle() != nullptr);
 
         for (unsigned attempts = 0; attempts < 3; ++attempts)
         {
@@ -105,7 +105,7 @@ namespace lmdb
             release_context(ctx);
             if (err != MDB_MAP_RESIZED)
                 return {lmdb::error(err)};
-            MONERO_CHECK(this->resize());
+            SHERKITTY_CHECK(this->resize());
         }
         return {lmdb::error(MDB_MAP_RESIZED)};
     }
@@ -117,7 +117,7 @@ namespace lmdb
         {
             const int err = mdb_env_set_userctx(handle(), std::addressof(ctx));
             if (err)
-                MONERO_THROW(lmdb::error(err), "Failed to set user context");
+                SHERKITTY_THROW(lmdb::error(err), "Failed to set user context");
         }
     }
 
@@ -128,13 +128,13 @@ namespace lmdb
 
     expect<void> database::resize() noexcept
     {
-        MONERO_PRECOND(handle() != nullptr);
+        SHERKITTY_PRECOND(handle() != nullptr);
 
         while (ctx.lock.test_and_set());
         while (ctx.active);
 
         MDB_envinfo info{};
-        MONERO_LMDB_CHECK(mdb_env_info(handle(), &info));
+        SHERKITTY_LMDB_CHECK(mdb_env_info(handle(), &info));
 
         const mdb_size_t resize = std::min(info.me_mapsize, max_resize);
         const int err = mdb_env_set_mapsize(handle(), info.me_mapsize + resize);
@@ -165,7 +165,7 @@ namespace lmdb
 
     expect<suspended_txn> database::reset_txn(read_txn txn) noexcept
     {
-        MONERO_PRECOND(txn != nullptr);
+        SHERKITTY_PRECOND(txn != nullptr);
         mdb_txn_reset(txn.get());
         release_context(ctx);
         return suspended_txn{txn.release()};
@@ -178,8 +178,8 @@ namespace lmdb
 
     expect<void> database::commit(write_txn txn) noexcept
     {
-        MONERO_PRECOND(txn != nullptr);
-        MONERO_LMDB_CHECK(mdb_txn_commit(txn.get()));
+        SHERKITTY_PRECOND(txn != nullptr);
+        SHERKITTY_LMDB_CHECK(mdb_txn_commit(txn.get()));
         txn.release();
         release_context(ctx);
         return success();

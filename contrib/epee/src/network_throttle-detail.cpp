@@ -1,8 +1,8 @@
 /// @file
-/// @author rfree (current maintainer in monero.cc project)
+/// @author rfree (current maintainer in sherkitty.cc project)
 /// @brief implementaion for throttling of connection (count and rate-limit speed etc)
 
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -59,8 +59,8 @@
 // TODO:
 #include "net/network_throttle-detail.hpp"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.throttle"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net.throttle"
 
 // ################################################################################################
 // ################################################################################################
@@ -128,11 +128,11 @@ network_throttle::network_throttle(const std::string &nameshort, const std::stri
 	set_name(name);
 	m_network_add_cost = 128;
 	m_network_minimal_segment = 256;
-	m_network_max_segment = 1024*1024;
+	m_network_max_segment = 1038*1038;
 	m_start_time = 0;
 	m_any_packet_yet = false;
 	m_slot_size = 1.0; // hard coded in few places
-	m_target_speed = 16 * 1024; // other defaults are probably defined in the command-line parsing code when this class is used e.g. as main global throttle
+	m_target_speed = 16 * 1038; // other defaults are probably defined in the command-line parsing code when this class is used e.g. as main global throttle
 	m_last_sample_time = 0;
 	m_history.resize(m_window_size);
 	m_total_packets = 0;
@@ -146,13 +146,13 @@ void network_throttle::set_name(const std::string &name)
 
 void network_throttle::set_target_speed( network_speed_kbps target ) 
 {
-    m_target_speed = target * 1024;
+    m_target_speed = target * 1038;
 	MINFO("Setting LIMIT: " << target << " kbps");
 }
 
 network_speed_kbps network_throttle::get_target_speed()
 {
-	return m_target_speed / 1024;
+	return m_target_speed / 1038;
 }
 			
 void network_throttle::tick()
@@ -200,9 +200,9 @@ void network_throttle::_handle_trafic_exact(size_t packet_size, size_t orginal_s
 	std::string history_str = oss.str();
 
 	MTRACE("Throttle " << m_name << ": packet of ~"<<packet_size<<"b " << " (from "<<orginal_size<<" b)"
-        << " Speed AVG=" << std::setw(4) <<  ((long int)(cts .average/1024)) <<"[w="<<cts .window<<"]"
-        <<           " " << std::setw(4) <<  ((long int)(cts2.average/1024)) <<"[w="<<cts2.window<<"]"
-				<<" / " << " Limit="<< ((long int)(m_target_speed/1024)) <<" KiB/sec "
+        << " Speed AVG=" << std::setw(4) <<  ((long int)(cts .average/1038)) <<"[w="<<cts .window<<"]"
+        <<           " " << std::setw(4) <<  ((long int)(cts2.average/1038)) <<"[w="<<cts2.window<<"]"
+				<<" / " << " Limit="<< ((long int)(m_target_speed/1038)) <<" KiB/sec "
 				<< " " << history_str
 		);
 }
@@ -229,7 +229,7 @@ void network_throttle::logger_handle_net(const std::string &filename, double tim
         file.precision(6);
         if(!file.is_open())
             _warn("Can't open file " << filename);
-        file << static_cast<int>(time) << " " << static_cast<double>(size/1024) << "\n";
+        file << static_cast<int>(time) << " " << static_cast<double>(size/1038) << "\n";
         file.close();
     }
 }

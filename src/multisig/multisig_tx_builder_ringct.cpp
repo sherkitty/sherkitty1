@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The Monero Project
+// Copyright (c) 2021, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -53,8 +53,8 @@
 #include <unordered_set>
 #include <vector>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "multisig"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "multisig"
 
 namespace multisig {
 

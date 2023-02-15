@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022, The Monero Project
+// Copyright (c) 2018-2022, The Sherkitty Project
 
 // All rights reserved.
 //
@@ -119,18 +119,18 @@ namespace lmdb
                 if (!txn)
                     return txn.error();
 
-                MONERO_PRECOND(*txn != nullptr);
+                SHERKITTY_PRECOND(*txn != nullptr);
                 const auto wrote = f(*(*txn));
                 if (wrote)
                 {
-                    MONERO_CHECK(commit(std::move(*txn)));
+                    SHERKITTY_CHECK(commit(std::move(*txn)));
                     return wrote;
                 }
                 if (wrote != lmdb::error(MDB_MAP_FULL))
                     return wrote;
 
                 txn->reset();
-                MONERO_CHECK(this->resize());
+                SHERKITTY_CHECK(this->resize());
             }
             return {lmdb::error(MDB_MAP_FULL)};
         }

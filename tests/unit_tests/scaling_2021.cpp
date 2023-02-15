@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2022, The Monero Project
+// Copyright (c) 2019-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // References:
-// - https://github.com/ArticMine/Monero-Documents/blob/master/MoneroScaling2021.pdf
-// - https://github.com/monero-project/research-lab/issues/70
+// - https://github.com/ArticMine/Sherkitty-Documents/blob/master/SherkittyScaling2021.pdf
+// - https://github.com/sherkitty-project/research-lab/issues/70
 
 #define IN_UNIT_TESTS
 

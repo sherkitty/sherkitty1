@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -122,7 +122,7 @@ bool gen_multisig_tx_validation_base::generate_with(std::vector<test_event_entry
     const std::function<void(std::vector<tx_source_entry> &sources, std::vector<tx_destination_entry> &destinations)> &pre_tx,
     const std::function<void(transaction &tx)> &post_tx) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
   bool r;
 
   CHECK_AND_ASSERT_MES(total >= 2, false, "Bad scheme");

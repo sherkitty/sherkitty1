@@ -34,8 +34,8 @@
 #include "span.h"
 #include "net/levin_base.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net"
 
 template<typename context_t>
 void on_levin_traffic(const context_t &context, bool initiator, bool sent, bool error, size_t bytes, const char *category);
@@ -62,7 +62,7 @@ namespace epee
       const boost::uuids::uuid &conn_id = context.m_connection_id;
       typename serialization::portable_storage stg;
       const_cast<t_arg&>(out_struct).store(stg);//TODO: add true const support to searilzation
-      levin::message_writer to_send{16 * 1024};
+      levin::message_writer to_send{16 * 1038};
       stg.store_to_binary(to_send.buffer);
       int res = transport.invoke_async(command, std::move(to_send), conn_id, [cb, command](int code, const epee::span<const uint8_t> buff, typename t_transport::connection_context& context)->bool
       {

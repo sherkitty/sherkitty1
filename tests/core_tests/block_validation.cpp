@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -69,7 +69,7 @@ namespace
 
 #define BLOCK_VALIDATION_INIT_GENERATE()                                                \
   GENERATE_ACCOUNT(miner_account);                                                      \
-  MAKE_GENESIS_BLOCK(events, blk_0, miner_account, 1338224400);
+  MAKE_GENESIS_BLOCK(events, blk_0, miner_account, 0);
 
 //----------------------------------------------------------------------------------------------------------------------
 // Tests

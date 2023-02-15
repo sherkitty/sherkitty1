@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -54,7 +54,7 @@ namespace
 
 bool gen_ring_signature_1::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
 
@@ -149,7 +149,7 @@ gen_ring_signature_2::gen_ring_signature_2()
  */
 bool gen_ring_signature_2::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
 
@@ -239,7 +239,7 @@ bool gen_ring_signature_big::generate(std::vector<test_event_entry>& events) con
   std::vector<block> blocks;
   blocks.reserve(m_test_size + CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW);
 
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
   GENERATE_ACCOUNT(miner_account);
 
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);

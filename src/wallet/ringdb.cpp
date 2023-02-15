@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022, The Monero Project
+// Copyright (c) 2018-2022, The Sherkitty Project
 
 // 
 // All rights reserved.
@@ -38,8 +38,8 @@
 #include "ringdb.h"
 #include "cryptonote_config.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "wallet.ringdb"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "wallet.ringdb"
 
 #define V1TAG ((uint64_t)798237759845202)
 
@@ -163,7 +163,7 @@ static int resize_env(MDB_env *env, const char *db_path, size_t needed)
   MDB_stat mst;
   int ret;
 
-  needed = std::max(needed, (size_t)(100ul * 1024 * 1024)); // at least 100 MB
+  needed = std::max(needed, (size_t)(100ul * 1038 * 1038)); // at least 100 MB
 
   ret = mdb_env_info(env, &mei);
   if (ret)
@@ -198,7 +198,7 @@ static int resize_env(MDB_env *env, const char *db_path, size_t needed)
 
 static size_t get_ring_data_size(size_t n_entries)
 {
-  return n_entries * (32 + 1024); // highball 1kB for the ring data to make sure
+  return n_entries * (32 + 1038); // highball 1kB for the ring data to make sure
 }
 
 enum { BLACKBALL_BLACKBALL, BLACKBALL_UNBLACKBALL, BLACKBALL_QUERY, BLACKBALL_CLEAR};

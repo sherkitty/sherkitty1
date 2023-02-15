@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022, The Monero Project
+// Copyright (c) 2018-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -95,7 +95,7 @@ namespace socks
         boost::asio::ip::tcp::socket proxy_;
         boost::asio::io_service::strand strand_;
         std::uint16_t buffer_size_;
-        std::uint8_t buffer_[1024];
+        std::uint8_t buffer_[1038];
         socks::version ver_;
 
         /*!

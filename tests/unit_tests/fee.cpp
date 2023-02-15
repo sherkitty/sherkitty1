@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -55,7 +55,7 @@ namespace
 
   // try with blocks ~ 1GB. Passing 2 GB will break on 32 bit systems
 
-  TEST_F(fee, 10xmr)
+  TEST_F(fee, 10xktty)
   {
     // CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 and lower are clamped
     ASSERT_EQ(Blockchain::get_dynamic_base_fee(10000000000000, CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2, 3), clamp_fee(2000000000));
@@ -70,7 +70,7 @@ namespace
     ASSERT_EQ(Blockchain::get_dynamic_base_fee(10000000000000, CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 * 20000ull, 3), clamp_fee(2000000000 / 20000));
   }
 
-  TEST_F(fee, 1xmr)
+  TEST_F(fee, 1xktty)
   {
     // CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 and lower are clamped
     ASSERT_EQ(Blockchain::get_dynamic_base_fee(1000000000000, CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2, 3), clamp_fee(200000000));
@@ -85,7 +85,7 @@ namespace
     ASSERT_EQ(Blockchain::get_dynamic_base_fee(1000000000000, CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 * 20000ull, 3), clamp_fee(200000000 / 20000));
   }
 
-  TEST_F(fee, dot3xmr)
+  TEST_F(fee, dot3xktty)
   {
     // CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 and lower are clamped
     ASSERT_EQ(Blockchain::get_dynamic_base_fee(300000000000, CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2, 3), clamp_fee(60000000));
@@ -110,11 +110,11 @@ namespace
   TEST_F(fee, double_at_full)
   {
     static const uint64_t block_rewards[] = {
-      20000000000000ull, // 20 monero
+      20000000000000ull, // 20 sherkitty
       13000000000000ull,
       1000000000000ull,
-      600000000000ull, // .6 monero, minimum reward per block at 2min
-      300000000000ull, // .3 monero, minimum reward per block at 1min
+      600000000000ull, // .6 sherkitty, minimum reward per block at 2min
+      300000000000ull, // .3 sherkitty, minimum reward per block at 1min
     };
     static const uint64_t median_block_weights[] = {
       CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2,
@@ -129,7 +129,7 @@ namespace
     {
       for (uint64_t median_block_weight: median_block_weights)
       {
-        ASSERT_TRUE(is_more_or_less(Blockchain::get_dynamic_base_fee(block_reward, median_block_weight, 3) * (median_block_weight / 1024.) * MAX_MULTIPLIER / (double)block_reward, 1.992 * 1000 / 1024));
+        ASSERT_TRUE(is_more_or_less(Blockchain::get_dynamic_base_fee(block_reward, median_block_weight, 3) * (median_block_weight / 1038.) * MAX_MULTIPLIER / (double)block_reward, 1.992 * 1000 / 1038));
       }
     }
   }

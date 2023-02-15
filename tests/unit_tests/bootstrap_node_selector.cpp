@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2022, The Monero Project
+// Copyright (c) 2020-2022, The Sherkitty Project
 
 // 
 // All rights reserved.
@@ -42,18 +42,18 @@ protected:
 
   const std::map<std::string, bool> white_nodes = {
     {
-      "white_node_1:18089", true
+      "white_node_1:56989", true
     },
     {
-      "white_node_2:18081", true
+      "white_node_2:56981", true
     }
   };
   const std::map<std::string, bool> gray_nodes = {
     {
-      "gray_node_1:18081", false
+      "gray_node_1:56981", false
     },
     {
-      "gray_node_2:18089", false
+      "gray_node_2:56989", false
     }
   };
 

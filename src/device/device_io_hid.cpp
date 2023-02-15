@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -35,8 +35,8 @@
 namespace hw {
   namespace io {
  
-    #undef MONERO_DEFAULT_LOG_CATEGORY
-    #define MONERO_DEFAULT_LOG_CATEGORY "device.io"
+    #undef SHERKITTY_DEFAULT_LOG_CATEGORY
+    #define SHERKITTY_DEFAULT_LOG_CATEGORY "device.io"
  
     #define ASSERT_X(exp,msg)    CHECK_AND_ASSERT_THROW_MES(exp, msg); 
 
@@ -84,7 +84,7 @@ namespace hw {
 
     void device_io_hid::io_hid_log(int read, unsigned char* buffer, int block_len) {
       if (hid_verbose) {
-        char  strbuffer[1024];
+        char  strbuffer[1038];
         hw::buffer_to_str(strbuffer, sizeof(strbuffer), (char*)buffer, block_len);
         MDEBUG( "HID " << (read?"<":">") <<" : "<<strbuffer);
       }

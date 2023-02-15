@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -183,7 +183,7 @@ namespace
 
 bool gen_tx_big_version::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -208,7 +208,7 @@ bool gen_tx_big_version::generate(std::vector<test_event_entry>& events) const
 
 bool gen_tx_unlock_time::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -250,7 +250,7 @@ bool gen_tx_unlock_time::generate(std::vector<test_event_entry>& events) const
 
 bool gen_tx_input_is_not_txin_to_key::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -286,7 +286,7 @@ bool gen_tx_input_is_not_txin_to_key::generate(std::vector<test_event_entry>& ev
 
 bool gen_tx_no_inputs_no_outputs::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -302,7 +302,7 @@ bool gen_tx_no_inputs_no_outputs::generate(std::vector<test_event_entry>& events
 
 bool gen_tx_no_inputs_has_outputs::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -323,7 +323,7 @@ bool gen_tx_no_inputs_has_outputs::generate(std::vector<test_event_entry>& event
 
 bool gen_tx_has_inputs_no_outputs::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -349,7 +349,7 @@ bool gen_tx_has_inputs_no_outputs::generate(std::vector<test_event_entry>& event
 
 bool gen_tx_invalid_input_amount::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -375,7 +375,7 @@ bool gen_tx_invalid_input_amount::generate(std::vector<test_event_entry>& events
 
 bool gen_tx_input_wo_key_offsets::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -406,7 +406,7 @@ bool gen_tx_input_wo_key_offsets::generate(std::vector<test_event_entry>& events
 
 bool gen_tx_key_offest_points_to_foreign_key::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -443,7 +443,7 @@ bool gen_tx_key_offest_points_to_foreign_key::generate(std::vector<test_event_en
 
 bool gen_tx_sender_key_offest_not_exist::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -470,7 +470,7 @@ bool gen_tx_sender_key_offest_not_exist::generate(std::vector<test_event_entry>&
 
 bool gen_tx_mixed_key_offest_not_exist::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -503,7 +503,7 @@ bool gen_tx_mixed_key_offest_not_exist::generate(std::vector<test_event_entry>& 
 
 bool gen_tx_key_image_not_derive_from_tx_key::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -539,7 +539,7 @@ bool gen_tx_key_image_not_derive_from_tx_key::generate(std::vector<test_event_en
 
 bool gen_tx_key_image_is_invalid::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -574,7 +574,7 @@ bool gen_tx_check_input_unlock_time::generate(std::vector<test_event_entry>& eve
 {
   static const size_t tests_count = 6;
 
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -633,7 +633,7 @@ bool gen_tx_check_input_unlock_time::generate(std::vector<test_event_entry>& eve
 
 bool gen_tx_txout_to_key_has_invalid_key::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -662,7 +662,7 @@ bool gen_tx_txout_to_key_has_invalid_key::generate(std::vector<test_event_entry>
 
 bool gen_tx_output_with_zero_amount::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -690,7 +690,7 @@ bool gen_tx_output_with_zero_amount::generate(std::vector<test_event_entry>& eve
 
 bool gen_tx_output_is_not_txout_to_key::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);
@@ -732,7 +732,7 @@ bool gen_tx_output_is_not_txout_to_key::generate(std::vector<test_event_entry>& 
 
 bool gen_tx_signatures_are_invalid::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);

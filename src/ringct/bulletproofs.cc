@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -44,8 +44,8 @@ extern "C"
 #include "multiexp.h"
 #include "bulletproofs.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "bulletproofs"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "bulletproofs"
 
 //#define DEBUG_BP
 
@@ -131,11 +131,11 @@ static void init_exponents()
   straus_HiGi_cache = straus_init_cache(data, STRAUS_SIZE_LIMIT);
   pippenger_HiGi_cache = pippenger_init_cache(data, 0, PIPPENGER_SIZE_LIMIT);
 
-  MINFO("Hi_p3/Gi_p3 cache size: " << (sizeof(Hi_p3)+sizeof(Gi_p3))/1024 << " kB");
-  MINFO("Straus cache size: " << straus_get_cache_size(straus_HiGi_cache)/1024 << " kB");
-  MINFO("Pippenger cache size: " << pippenger_get_cache_size(pippenger_HiGi_cache)/1024 << " kB");
+  MINFO("Hi_p3/Gi_p3 cache size: " << (sizeof(Hi_p3)+sizeof(Gi_p3))/1038 << " kB");
+  MINFO("Straus cache size: " << straus_get_cache_size(straus_HiGi_cache)/1038 << " kB");
+  MINFO("Pippenger cache size: " << pippenger_get_cache_size(pippenger_HiGi_cache)/1038 << " kB");
   size_t cache_size = straus_get_cache_size(straus_HiGi_cache) + pippenger_get_cache_size(pippenger_HiGi_cache);
-  MINFO("Total cache size: " << cache_size/1024 << "kB");
+  MINFO("Total cache size: " << cache_size/1038 << "kB");
   init_done = true;
 }
 

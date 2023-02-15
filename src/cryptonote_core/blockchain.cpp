@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -58,10 +58,10 @@
 #include "common/pruning.h"
 #include "time_helper.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "blockchain"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "blockchain"
 
-#define FIND_BLOCKCHAIN_SUPPLEMENT_MAX_SIZE (100*1024*1024) // 100 MB
+#define FIND_BLOCKCHAIN_SUPPLEMENT_MAX_SIZE (100*1038*1038) // 100 MB
 
 using namespace crypto;
 
@@ -988,7 +988,7 @@ start:
     MGINFO("START DUMP");
     MGINFO(ss.str());
     MGINFO("END DUMP");
-    MGINFO("Please send moneromooo on Libera.Chat the contents of this log, from a couple dozen lines before START DUMP to END DUMP");
+    MGINFO("Please send sherkittymooo on Libera.Chat the contents of this log, from a couple dozen lines before START DUMP to END DUMP");
   }
   return diff;
 }
@@ -3822,8 +3822,8 @@ bool Blockchain::check_fee(size_t tx_weight, uint64_t fee) const
     }
     MDEBUG("Using " << print_money(fee_per_kb) << "/kB fee");
 
-    needed_fee = tx_weight / 1024;
-    needed_fee += (tx_weight % 1024) ? 1 : 0;
+    needed_fee = tx_weight / 1038;
+    needed_fee += (tx_weight % 1038) ? 1 : 0;
     needed_fee *= fee_per_kb;
   }
 
@@ -3838,7 +3838,7 @@ bool Blockchain::check_fee(size_t tx_weight, uint64_t fee) const
 //------------------------------------------------------------------
 void Blockchain::get_dynamic_base_fee_estimate_2021_scaling(uint64_t grace_blocks, uint64_t base_reward, uint64_t Mnw, uint64_t Mlw, std::vector<uint64_t> &fees) const
 {
-  // variable names and calculations as per https://github.com/ArticMine/Monero-Documents/blob/master/MoneroScaling2021-02.pdf
+  // variable names and calculations as per https://github.com/ArticMine/Sherkitty-Documents/blob/master/SherkittyScaling2021-02.pdf
   // from (earlier than) this fork, the base fee is per byte
   const uint64_t Mfw = std::min(Mnw, Mlw);
 
@@ -4609,7 +4609,7 @@ bool Blockchain::check_blockchain_pruning()
   return m_db->check_pruning();
 }
 //------------------------------------------------------------------
-// returns min(Mb, 1.7*Ml) as per https://github.com/ArticMine/Monero-Documents/blob/master/MoneroScaling2021-02.pdf from HF_VERSION_LONG_TERM_BLOCK_WEIGHT
+// returns min(Mb, 1.7*Ml) as per https://github.com/ArticMine/Sherkitty-Documents/blob/master/SherkittyScaling2021-02.pdf from HF_VERSION_LONG_TERM_BLOCK_WEIGHT
 uint64_t Blockchain::get_next_long_term_block_weight(uint64_t block_weight) const
 {
   PERF_TIMER(get_next_long_term_block_weight);
@@ -4802,7 +4802,7 @@ void Blockchain::check_against_checkpoints(const checkpoints& points, bool enfor
       }
       else
       {
-        LOG_ERROR("WARNING: local blockchain failed to pass a MoneroPulse checkpoint, and you could be on a fork. You should either sync up from scratch, OR download a fresh blockchain bootstrap, OR enable checkpoint enforcing with the --enforce-dns-checkpointing command-line option");
+        LOG_ERROR("WARNING: local blockchain failed to pass a SherkittyPulse checkpoint, and you could be on a fork. You should either sync up from scratch, OR download a fresh blockchain bootstrap, OR enable checkpoint enforcing with the --enforce-dns-checkpointing command-line option");
       }
     }
   }

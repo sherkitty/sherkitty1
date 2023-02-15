@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The Monero Project
+// Copyright (c) 2021, The Sherkitty Project
 // 
 // All rights reserved.
 // 

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022, The Monero Project
+// Copyright (c) 2018-2022, The Sherkitty Project
 
 // 
 // All rights reserved.
@@ -42,8 +42,8 @@
 #include "net/net_ssl.h"
 #include "file_io_utils.h" // to validate .crt and .key paths
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.ssl"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "net.ssl"
 
 // openssl genrsa -out /tmp/KEY 4096
 // openssl req -new -key /tmp/KEY -out /tmp/REQ
@@ -315,9 +315,9 @@ boost::asio::ssl::context ssl_options_t::create_context() const
   SSL_CTX *ctx = ssl_context.native_handle();
   CHECK_AND_ASSERT_THROW_MES(ctx, "Failed to get SSL context");
   SSL_CTX_clear_options(ctx, SSL_OP_LEGACY_SERVER_CONNECT); // SSL_CTX_SET_OPTIONS(3)
-  SSL_CTX_set_session_cache_mode(ctx, SSL_SESS_CACHE_OFF); // https://stackoverflow.com/questions/22378442
+  SSL_CTX_set_session_cache_mode(ctx, SSL_SESS_CACHE_OFF); // https://stackoverflow.com/questions/22378999
 #ifdef SSL_OP_NO_TICKET
-  SSL_CTX_set_options(ctx, SSL_OP_NO_TICKET); // https://stackoverflow.com/questions/22378442
+  SSL_CTX_set_options(ctx, SSL_OP_NO_TICKET); // https://stackoverflow.com/questions/22378999
 #endif
 #ifdef SSL_OP_NO_RENEGOTIATION
   SSL_CTX_set_options(ctx, SSL_OP_NO_RENEGOTIATION);

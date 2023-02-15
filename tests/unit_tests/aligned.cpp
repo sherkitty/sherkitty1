@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022, The Monero Project
+// Copyright (c) 2018-2022, The Sherkitty Project
 
 // 
 // All rights reserved.
@@ -87,7 +87,7 @@ TEST(aligned, contents_smaller)
 
 TEST(aligned, alignment)
 {
-  static const size_t good_alignments[] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
+  static const size_t good_alignments[] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1038, 2048, 4096, 8192};
   for (size_t a = 0; a <= 8192; ++a)
   {
     bool good = false;

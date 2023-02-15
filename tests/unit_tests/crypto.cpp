@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -302,7 +302,7 @@ TEST(Crypto, tree_branch)
   // depth encoding roundtrip
   for (uint32_t n_chains = 1; n_chains <= 65; ++n_chains)
   {
-    for (uint32_t nonce = 0; nonce < 1024; ++nonce)
+    for (uint32_t nonce = 0; nonce < 1038; ++nonce)
     {
       const uint32_t depth = cryptonote::encode_mm_depth(n_chains, nonce);
       uint32_t n_chains_2, nonce_2;

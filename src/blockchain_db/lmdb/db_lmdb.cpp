@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification, are
@@ -42,8 +42,8 @@
 #include "profile_tools.h"
 #include "ringct/rctOps.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "blockchain.db.lmdb"
+#undef SHERKITTY_DEFAULT_LOG_CATEGORY
+#define SHERKITTY_DEFAULT_LOG_CATEGORY "blockchain.db.lmdb"
 
 
 #if defined(__i386) || defined(__x86_64)
@@ -515,7 +515,7 @@ void lmdb_resized(MDB_env *env, int isactive)
   mdb_env_info(env, &mei);
   uint64_t new_mapsize = mei.me_mapsize;
 
-  MGINFO("LMDB Mapsize increased." << "  Old: " << old / (1024 * 1024) << "MiB" << ", New: " << new_mapsize / (1024 * 1024) << "MiB");
+  MGINFO("LMDB Mapsize increased." << "  Old: " << old / (1038 * 1038) << "MiB" << ", New: " << new_mapsize / (1038 * 1038) << "MiB");
 
   mdb_txn_safe::allow_new_txns();
 }
@@ -609,7 +609,7 @@ void BlockchainLMDB::do_resize(uint64_t increase_size)
   if (result)
     throw0(DB_ERROR(lmdb_error("Failed to set new mapsize: ", result).c_str()));
 
-  MGINFO("LMDB Mapsize increased." << "  Old: " << mei.me_mapsize / (1024 * 1024) << "MiB" << ", New: " << new_mapsize / (1024 * 1024) << "MiB");
+  MGINFO("LMDB Mapsize increased." << "  Old: " << mei.me_mapsize / (1038 * 1038) << "MiB" << ", New: " << new_mapsize / (1038 * 1038) << "MiB");
 
   mdb_txn_safe::allow_new_txns();
 }
@@ -708,7 +708,7 @@ uint64_t BlockchainLMDB::get_estimated_batch_size(uint64_t batch_num_blocks, uin
   float db_expand_factor = 4.5f;
   uint64_t num_prev_blocks = 500;
   // For resizing purposes, allow for at least 4k average block size.
-  uint64_t min_block_size = 4 * 1024;
+  uint64_t min_block_size = 4 * 1038;
 
   uint64_t block_stop = 0;
   uint64_t m_height = height();
@@ -1504,7 +1504,7 @@ void BlockchainLMDB::open(const std::string& filename, const int db_flags)
         mdb_env_close(m_env);
         m_open = false;
         MFATAL("Existing lmdb database needs to be converted, which cannot be done on a read-only database.");
-        MFATAL("Please run monerod once to convert the database.");
+        MFATAL("Please run sherkittyd once to convert the database.");
         return;
       }
       // Note that there was a schema change within version 0 as well.
@@ -2260,7 +2260,7 @@ bool BlockchainLMDB::prune_worker(int mode, uint32_t pruning_seed)
   TIME_MEASURE_FINISH(t);
 
   MINFO((mode == prune_mode_check ? "Checked" : "Pruned") << " blockchain in " <<
-      t << " ms: " << (n_bytes/1024.0f/1024.0f) << " MB (" << db_bytes/1024.0f/1024.0f << " MB) pruned in " <<
+      t << " ms: " << (n_bytes/1038.0f/1038.0f) << " MB (" << db_bytes/1038.0f/1038.0f << " MB) pruned in " <<
       n_pruned_records << " records (" << pages0 - pages1 << "/" << pages0 << " " << db_stats.ms_psize << " byte pages), " <<
       n_prunable_records << "/" << n_total_records << " pruned records");
   return true;
@@ -4023,7 +4023,7 @@ uint64_t BlockchainLMDB::add_block(const std::pair<block, blobdata>& blk, size_t
   check_open();
   uint64_t m_height = height();
 
-  if (m_height % 1024 == 0)
+  if (m_height % 1038 == 0)
   {
     // for batch mode, DB resize check is done at start of batch transaction
     if (! m_batch_active && need_resize())

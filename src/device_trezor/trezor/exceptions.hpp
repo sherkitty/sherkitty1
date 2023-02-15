@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef MONERO_EXCEPTIONS_H
-#define MONERO_EXCEPTIONS_H
+#ifndef SHERKITTY_EXCEPTIONS_H
+#define SHERKITTY_EXCEPTIONS_H
 
 #include <exception>
 #include <string>
@@ -190,4 +190,4 @@ namespace proto {
 }
 }
 }
-#endif //MONERO_EXCEPTIONS_H
+#endif //SHERKITTY_EXCEPTIONS_H

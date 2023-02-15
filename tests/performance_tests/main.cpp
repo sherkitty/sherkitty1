@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -323,7 +323,7 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 128);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 256);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 512);
-  TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 1024);
+  TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 1038);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 2048);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_bos_coster, 4096);
 
@@ -336,7 +336,7 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 128);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 256);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 512);
-  TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 1024);
+  TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 1038);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 2048);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus, 4096);
 
@@ -349,7 +349,7 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 128);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 256);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 512);
-  TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 1024);
+  TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 1038);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 2048);
   TEST_PERFORMANCE2(filter, p, test_multiexp, multiexp_straus_cached, 4096);
 
@@ -363,7 +363,7 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 128, 5);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 256, 6);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 512, 7);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 7);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 7);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 2048, 8);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 4096, 9);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 2, 1);
@@ -375,7 +375,7 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 128, 5);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 256, 6);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 512, 7);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 7);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 7);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 2048, 8);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 4096, 9);
 #else
@@ -460,15 +460,15 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 512, 7);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 512, 8);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 512, 9);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 1);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 2);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 3);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 4);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 5);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 6);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 7);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 8);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1024, 9);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 1);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 2);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 3);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 4);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 5);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 6);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 7);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 8);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 1038, 9);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 2048, 1);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 2048, 2);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger_cached, 2048, 3);
@@ -569,15 +569,15 @@ int main(int argc, char** argv)
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 512, 7);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 512, 8);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 512, 9);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 1);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 2);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 3);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 4);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 5);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 6);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 7);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 8);
-  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1024, 9);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 1);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 2);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 3);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 4);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 5);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 6);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 7);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 8);
+  TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 1038, 9);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 2048, 1);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 2048, 2);
   TEST_PERFORMANCE3(filter, p, test_multiexp, multiexp_pippenger, 2048, 3);

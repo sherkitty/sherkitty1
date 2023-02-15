@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -43,7 +43,7 @@
 
 namespace
 {
-  const uint32_t test_server_port = 5626;
+  const uint32_t test_server_port = 8926;
   const std::string test_server_host("127.0.0.1");
 
   struct test_connection_context : public epee::net_utils::connection_context_base
@@ -632,14 +632,14 @@ TEST(boosted_tcp_server, strand_deadlock)
     {
       unique_lock_t guard(lock);
       if (!context.m_is_income) {
-        if (context.m_recv_cnt == 1024) {
+        if (context.m_recv_cnt == 1038) {
           guard.unlock();
           socket->do_send(byte_slice_t{"."});
         }
       }
       else {
         if (context.m_recv_cnt == 1) {
-          for(size_t i = 0; i < 1024; ++i) {
+          for(size_t i = 0; i < 1038; ++i) {
             guard.unlock();
             socket->do_send(byte_slice_t{"."});
             guard.lock();
@@ -656,7 +656,7 @@ TEST(boosted_tcp_server, strand_deadlock)
     {
       unique_lock_t guard(lock);
       if(!context.m_is_income
-        && context.m_recv_cnt == 1024
+        && context.m_recv_cnt == 1038
         && context.m_send_cnt == 2
       ) {
         guard.unlock();

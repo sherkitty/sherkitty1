@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -47,8 +47,8 @@ namespace hw {
         bool apdu_verbose =true;
     }
 
-    #undef MONERO_DEFAULT_LOG_CATEGORY
-    #define MONERO_DEFAULT_LOG_CATEGORY "device.ledger"
+    #undef SHERKITTY_DEFAULT_LOG_CATEGORY
+    #define SHERKITTY_DEFAULT_LOG_CATEGORY "device.ledger"
 
     /* ===================================================================== */
     /* ===                           Debug                              ==== */
@@ -366,7 +366,7 @@ namespace hw {
 
       void device_ledger::logCMD() {
       if (apdu_verbose) {
-        char  strbuffer[1024];
+        char  strbuffer[1038];
         snprintf(strbuffer, sizeof(strbuffer), "%.02x %.02x %.02x %.02x %.02x ",
           this->buffer_send[0],
           this->buffer_send[1],
@@ -382,7 +382,7 @@ namespace hw {
 
     void device_ledger::logRESP() {
       if (apdu_verbose) {
-        char  strbuffer[1024];
+        char  strbuffer[1038];
         snprintf(strbuffer, sizeof(strbuffer), "%.04x ", this->sw);
         const size_t len = strlen(strbuffer);
         buffer_to_str(strbuffer+len, sizeof(strbuffer)-len, (char*)(this->buffer_recv), this->length_recv);
@@ -446,10 +446,10 @@ namespace hw {
     bool device_ledger::reset() {
       reset_buffer();
       int offset = set_command_header_noopt(INS_RESET);
-      const size_t verlen = strlen(MONERO_VERSION);
-      ASSERT_X(offset + verlen <= BUFFER_SEND_SIZE, "MONERO_VERSION is too long")
-      memmove(this->buffer_send+offset, MONERO_VERSION, verlen);
-      offset += strlen(MONERO_VERSION);
+      const size_t verlen = strlen(SHERKITTY_VERSION);
+      ASSERT_X(offset + verlen <= BUFFER_SEND_SIZE, "SHERKITTY_VERSION is too long")
+      memmove(this->buffer_send+offset, SHERKITTY_VERSION, verlen);
+      offset += strlen(SHERKITTY_VERSION);
       this->buffer_send[4] = offset-5;
       this->length_send = offset;
       this->exchange();
@@ -469,7 +469,7 @@ namespace hw {
       this->sw = (this->buffer_recv[length_recv]<<8) | this->buffer_recv[length_recv+1];
       logRESP();
       MDEBUG("Device "<< this->id << " exchange: sw: " << this->sw << " expected: " << ok);
-      ASSERT_X(sw != SW_CLIENT_NOT_SUPPORTED, "Monero Ledger App doesn't support current monero version. Try to update the Monero Ledger App, at least " << MINIMAL_APP_VERSION_MAJOR<< "." << MINIMAL_APP_VERSION_MINOR << "." << MINIMAL_APP_VERSION_MICRO << " is required.");
+      ASSERT_X(sw != SW_CLIENT_NOT_SUPPORTED, "Sherkitty Ledger App doesn't support current sherkitty version. Try to update the Sherkitty Ledger App, at least " << MINIMAL_APP_VERSION_MAJOR<< "." << MINIMAL_APP_VERSION_MINOR << "." << MINIMAL_APP_VERSION_MICRO << " is required.");
       ASSERT_X(sw != SW_PROTOCOL_NOT_SUPPORTED, "Make sure no other program is communicating with the Ledger.");
       ASSERT_SW(this->sw,ok,mask);
 

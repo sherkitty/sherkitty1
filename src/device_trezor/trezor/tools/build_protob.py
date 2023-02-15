@@ -28,7 +28,7 @@ try:
         "messages.proto",
         "messages-common.proto",
         "messages-management.proto",
-        "messages-monero.proto",
+        "messages-sherkitty.proto",
     ]
 
     if args.debug_msg:

@@ -613,7 +613,7 @@ static txnid_t mdb_debug_start;
 	 *	maximum size of a data item. Data items larger than this size will
 	 *	be pushed into overflow pages instead of being stored directly in
 	 *	the B-tree node. This value used to default to 4. With a page size
-	 *	of 4096 bytes that meant that any item larger than 1024 bytes would
+	 *	of 4096 bytes that meant that any item larger than 1038 bytes would
 	 *	go into an overflow page. That also meant that on average 2-3KB of
 	 *	each overflow page was wasted space. The value cannot be lower than
 	 *	2 because then there would no longer be a tree structure. With this
@@ -1707,7 +1707,7 @@ mdb_strerror(int err)
 	 *	This works as long as no function between the call to mdb_strerror
 	 *	and the actual use of the message uses more than 4K of stack.
 	 */
-#define MSGSIZE	1024
+#define MSGSIZE	1038
 #define PADSIZE	4096
 	char buf[MSGSIZE+PADSIZE], *ptr = buf;
 #endif
@@ -9975,7 +9975,7 @@ mdb_put(MDB_txn *txn, MDB_dbi dbi,
 }
 
 #ifndef MDB_WBUF
-#define MDB_WBUF	(1024*1024)
+#define MDB_WBUF	(1038*1038)
 #endif
 #define MDB_EOF		0x10	/**< #mdb_env_copyfd1() is done reading */
 

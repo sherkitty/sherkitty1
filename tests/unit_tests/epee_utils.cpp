@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -1116,10 +1116,10 @@ TEST(ByteStream, ToByteSlice)
 
   epee::byte_stream stream;
 
-  stream.reserve(128*1024);
+  stream.reserve(128*1038);
   stream.write(source);
   EXPECT_EQ(sizeof(source), stream.size());
-  EXPECT_EQ(128*1024, stream.capacity());
+  EXPECT_EQ(128*1038, stream.capacity());
   EXPECT_TRUE(equal(source, byte_span{stream.data(), stream.size()}));
 
   const epee::byte_slice slice{std::move(stream), true};
@@ -1415,7 +1415,7 @@ TEST(StringTools, GetIpInt32)
   The existing epee conversion function does not work with 255.255.255.255, for
   the reasons specified in the inet_addr documentation. Consider fixing in a
   future patch. This address is not likely to be used for purposes within
-  monero.
+  sherkitty.
   EXPECT_TRUE(epee::string_tools::get_ip_int32_from_string(ip, "255.255.255.255"));
   EXPECT_EQ(htonl(0xffffffff), ip);
 */

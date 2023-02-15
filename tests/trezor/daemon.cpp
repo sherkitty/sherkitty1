@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 //
 // All rights reserved.
 //
@@ -68,7 +68,7 @@ void mock_daemon::default_options(boost::program_options::variables_map & vm)
 
   // By default pick non-standard ports to avoid confusion with possibly locally running daemons (mainnet/testnet)
   const char *test_p2p_port = getenv("TEST_P2P_PORT");
-  auto p2p_port = std::string(test_p2p_port && strlen(test_p2p_port) > 0 ? test_p2p_port : "61340");
+  auto p2p_port = std::string(test_p2p_port && strlen(test_p2p_port) > 0 ? test_p2p_port : "57340");
   tools::options::set_option(vm, nodetool::arg_p2p_bind_port, po::variable_value(p2p_port, false));
 
   const char *test_rpc_port = getenv("TEST_RPC_PORT");

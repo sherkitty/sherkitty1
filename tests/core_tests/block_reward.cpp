@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -126,7 +126,7 @@ gen_block_reward::gen_block_reward()
 
 bool gen_block_reward::generate(std::vector<test_event_entry>& events) const
 {
-  uint64_t ts_start = 1338224400;
+  uint64_t ts_start = 0;
 
   GENERATE_ACCOUNT(miner_account);
   MAKE_GENESIS_BLOCK(events, blk_0, miner_account, ts_start);

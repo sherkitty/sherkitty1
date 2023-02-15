@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022, The Monero Project
+// Copyright (c) 2014-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -963,7 +963,7 @@ TEST(node_server, race_condition)
         else
           return {};
       }
-      std::vector<blob_t> txs(128 / 64 * 1024 * 1024, blob_t(1, 'x'));
+      std::vector<blob_t> txs(128 / 64 * 1038 * 1038, blob_t(1, 'x'));
       worker_t worker([this]{
         p2p_endpoint->for_each_connection(
           [this](context_t &, uint64_t, uint32_t){
@@ -1003,7 +1003,7 @@ TEST(node_server, race_condition)
     }
     bool process_payload_sync_data(const payload_t &payload, contexts::p2p &context, bool is_inital) {
       context.m_state = context_t::state_normal;
-      context.m_needed_objects.resize(512 * 1024);
+      context.m_needed_objects.resize(512 * 1038);
       {
         unique_lock_t guard(lock);
         ++counter;

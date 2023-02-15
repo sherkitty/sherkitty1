@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022, The Monero Project
+// Copyright (c) 2017-2022, The Sherkitty Project
 // 
 // All rights reserved.
 // 
@@ -195,7 +195,7 @@ namespace
   {
   public:
     const static uint64_t invoke_timeout = 5 * 1000;
-    const static size_t max_packet_size = 10 * 1024 * 1024;
+    const static size_t max_packet_size = 10 * 1038 * 1038;
 
     typedef std::unique_ptr<test_connection> test_connection_ptr;
 
