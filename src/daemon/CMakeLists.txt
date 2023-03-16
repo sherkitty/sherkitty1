@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2022, The Monero Project
+# Copyright (c) 2014-2022, The Sherkitty Project
 #
 # All rights reserved.
 #
@@ -37,11 +37,11 @@ set(daemon_sources
 
 set(daemon_headers)
 
-monero_find_all_headers(daemon_private_headers "${CMAKE_CURRENT_SOURCE_DIR}")
+sherkitty_find_all_headers(daemon_private_headers "${CMAKE_CURRENT_SOURCE_DIR}")
 
-monero_private_headers(daemon
+sherkitty_private_headers(daemon
   ${daemon_private_headers})
-monero_add_executable(daemon
+sherkitty_add_executable(daemon
   ${daemon_sources}
   ${daemon_headers}
   ${daemon_private_headers})
@@ -71,5 +71,5 @@ target_link_libraries(daemon
     ${Blocks})
 set_property(TARGET daemon
   PROPERTY
-    OUTPUT_NAME "monerod")
+    OUTPUT_NAME "sherkittyd")
 install(TARGETS daemon DESTINATION bin)
