@@ -41,26 +41,26 @@ RUN set -ex && \
     rm -rf /var/lib/apt
 COPY --from=builder /src/build/x86_64-linux-gnu/release/bin /usr/local/bin/
 
-# Create monero user
-RUN adduser --system --group --disabled-password monero && \
-	mkdir -p /wallet /home/monero/.bitmonero && \
-	chown -R monero:monero /home/monero/.bitmonero && \
-	chown -R monero:monero /wallet
+# Create sherkitty user
+RUN adduser --system --group --disabled-password sherkitty && \
+	mkdir -p /wallet /home/sherkitty/.bitsherkitty && \
+	chown -R sherkitty:sherkitty /home/sherkitty/.bitsherkitty && \
+	chown -R sherkitty:sherkitty /wallet
 
 # Contains the blockchain
-VOLUME /home/monero/.bitmonero
+VOLUME /home/sherkitty/.bitsherkitty
 
 # Generate your wallet via accessing the container and run:
 # cd /wallet
-# monero-wallet-cli
+# sherkitty-wallet-cli
 VOLUME /wallet
 
-EXPOSE 18080
-EXPOSE 18081
+EXPOSE 56980
+EXPOSE 56981
 
-# switch to user monero
-USER monero
+# switch to user sherkitty
+USER sherkitty
 
-ENTRYPOINT ["monerod"]
-CMD ["--p2p-bind-ip=0.0.0.0", "--p2p-bind-port=18080", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port=18081", "--non-interactive", "--confirm-external-bind"]
+ENTRYPOINT ["sherkittyd"]
+CMD ["--p2p-bind-ip=0.0.0.0", "--p2p-bind-port=56980", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port=56981", "--non-interactive", "--confirm-external-bind"]
 

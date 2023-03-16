@@ -30,7 +30,7 @@ jobs:
     env:
       CCACHE_TEMPDIR: /tmp/.ccache-temp
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
     - uses: actions/cache@v2
@@ -54,7 +54,7 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
     - uses: actions/cache@v2
@@ -82,7 +82,7 @@ jobs:
       matrix:
         os: [ubuntu-22.04, ubuntu-20.04]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
     - uses: actions/cache@v2
@@ -96,7 +96,7 @@ jobs:
       run: ${{env.APT_SET_CONF}}
     - name: update apt
       run: sudo apt update
-    - name: install monero dependencies
+    - name: install sherkitty dependencies
       run: ${{env.APT_INSTALL_LINUX}}
     - name: build
       run: |
@@ -108,7 +108,7 @@ jobs:
     env:
       CCACHE_TEMPDIR: /tmp/.ccache-temp
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
     - uses: actions/cache@v2
@@ -122,7 +122,7 @@ jobs:
       run: ${{env.APT_SET_CONF}}
     - name: update apt
       run: sudo apt update
-    - name: install monero dependencies
+    - name: install sherkitty dependencies
       run: ${{env.APT_INSTALL_LINUX}}
     - name: build
       run: |
@@ -136,7 +136,7 @@ jobs:
     env:
       CCACHE_TEMPDIR: /tmp/.ccache-temp
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
     - name: ccache
@@ -151,7 +151,7 @@ jobs:
       run: ${{env.APT_SET_CONF}}
     - name: update apt
       run: sudo apt update
-    - name: install monero dependencies
+    - name: install sherkitty dependencies
       run: ${{env.APT_INSTALL_LINUX}}
     - name: install Python dependencies
       run: pip install requests psutil monotonic zmq
@@ -170,17 +170,17 @@ jobs:
   source-archive:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
     - name: archive
       run: |
         pip install git-archive-all
-        export VERSION="monero-$(git describe)"
+        export VERSION="sherkitty-$(git describe)"
         export OUTPUT="$VERSION.tar"
         echo "OUTPUT=$OUTPUT" >> $GITHUB_ENV
         /home/runner/.local/bin/git-archive-all --prefix "$VERSION/" --force-submodules "$OUTPUT"
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ env.OUTPUT }}
-        path: /home/runner/work/monero/monero/${{ env.OUTPUT }}
+        path: /home/runner/work/sherkitty/sherkitty/${{ env.OUTPUT }}

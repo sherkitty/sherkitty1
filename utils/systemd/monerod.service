@@ -1,16 +1,16 @@
 [Unit]
-Description=Monero Full Node
+Description=Sherkitty Full Node
 After=network.target
 
 [Service]
-User=monero
-Group=monero
+User=sherkitty
+Group=sherkitty
 WorkingDirectory=~
-StateDirectory=monero
-LogsDirectory=monero
+StateDirectory=sherkitty
+LogsDirectory=sherkitty
 
 Type=simple
-ExecStart=/usr/bin/monerod --config-file /etc/monerod.conf --non-interactive
+ExecStart=/usr/bin/sherkittyd --config-file /etc/sherkittyd.conf --non-interactive
 StandardOutput=null
 StandardError=null
 

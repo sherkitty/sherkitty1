@@ -1,7 +1,7 @@
 #!/bin/awk -f
 
 function max(a, b) { if (a < b) return b; return a; }
-function bytes_str(b) { if (b < 1024) return b " bytes"; if (b < 1024 * 1024) return b/1024 " kB"; return b/1024/1024 " MB"; }
+function bytes_str(b) { if (b < 1038) return b " bytes"; if (b < 1038 * 1038) return b/1038 " kB"; return b/1038/1038 " MB"; }
 function time_str(b) { if (b < 120) return b " sec"; if (b < 3600) return b/60 " min"; if (b < 86400) return b/3600 " hours"; return b/86400 " days"}
 
 BEGIN {
